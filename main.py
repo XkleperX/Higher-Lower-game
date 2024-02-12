@@ -2,14 +2,11 @@ from art import logo, vs
 from game_data import data
 import random
 import os
-# ! Start
+import time
 
-# Todo: Print the logo
-
+# Print the logo
 print(logo)
-print(
-    "Welcome to the Higher or Lower Game!\nChoose between two options based on the one with more followers.\n"
-)
+print("Welcome to the Higher or Lower Game! 🚀 Choose between two options based on the one with more followers.\n")
 
 
 def random_data():
@@ -23,19 +20,25 @@ def random_data():
     return format_data, follower_count
 
 
-plyerA = random_data()
-description_A = plyerA[0]
-followers_count_A = plyerA[1]
+def print_with_delay(text, delay=0.03):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
 
-print(description_A)
-print(followers_count_A)
-print(vs)
 
-plyerB = random_data()
-description_B = plyerB[0]
-followers_count_B = plyerB[1]
+playerA = random_data()
+description_A = playerA[0]
+followers_count_A = playerA[1]
 
-print(description_B)
+print_with_delay(description_A + "\n")
+print_with_delay(str(followers_count_A) + "\n")
+print_with_delay(vs + "\n")
+
+playerB = random_data()
+description_B = playerB[0]
+followers_count_B = playerB[1]
+
+print_with_delay(description_B + "\n")
 
 lose = False
 score = 0
@@ -45,78 +48,33 @@ while not lose:
         if followers_count_A > followers_count_B:
             score += 1
             os.system("cls")
-            print(f"Your score is {score}")
-            print(description_A)
-            print(followers_count_A)
-
-            print(vs)
-
-            plyerB = random_data()
-            description_B = plyerB[0]
-            followers_count_B = plyerB[1]
-            print(description_B)
-
-            log = input("\nWho has more followers? Type 'A' or 'B': ").lower()
-            
-
-
+            print(f"Your score is {score}! 🎉")
+            print_with_delay(description_A + "\n")
+            print_with_delay(str(followers_count_A) + "\n")
+            print_with_delay(vs + "\n")
+            time.sleep(0.5)
+            playerB = random_data()
+            description_B = playerB[0]
+            followers_count_B = playerB[1]
+            print_with_delay(description_B + "\n")
         elif followers_count_A < followers_count_B:
-            print("You lose")
-            print(f"Your score is {score}")
+            print_with_delay("You lose 😞 Better luck next time!\n")
+            print_with_delay(f"Your final score is {score}!\n")
             lose = True
-
     elif log == "b":
         if followers_count_B > followers_count_A:
             score += 1
             os.system("cls")
-            print(f"Your score is {score}")
-
-            print(description_B)  
-            print(followers_count_B)
-            print(vs)
-
-            plyerA = random_data()
-            description_A = plyerA[0]
-            followers_count_A = plyerA[1]
-
-            print(description_A)
+            print(f"Your score is {score}! 🎉")
+            print_with_delay(description_B + "\n")
+            print_with_delay(str(followers_count_B) + "\n")
+            print_with_delay(vs + "\n")
+            time.sleep(0.5)
+            playerA = random_data()
+            description_A = playerA[0]
+            followers_count_A = playerA[1]
+            print_with_delay(description_A + "\n")
         elif followers_count_B < followers_count_A:
-            print("You lose")
-            print(f"Your score is {score}")
+            print_with_delay("You lose 😞 Better luck next time!\n")
+            print_with_delay(f"Your final score is {score}!\n")
             lose = True
-
-
-# def plyerA():
-#     plyer_des, followers = random_data()
-#     return plyer_des, followers
-
-
-# def plyerB():
-#     plyer_des, followers = random_data()
-#     return plyer_des, followers
-
-
-# playerA = random_data()
-# print(plyerA[0])
-
-# print(vs)
-
-# player_desB, followersB = plyerB()
-# print(player_desB)
-
-
-# # Todo: Try some test to get the data from the dictionary
-
-
-# # Todo: Try to get the data from a function that take it randomly
-
-# # Todo: get the data form the data module
-# # Todo: import the random module to choose different data
-# # Todo: Try to compare the first one A with the second one with followers dat
-
-# # Todo: Ask the user to choose between A and B
-# # Todo: If the user has chosen the right choice the score rise
-# # Todo: after get a right choice compare the right with other one
-# # Todo: make sure the one you choose to remove it form the list
-
-# # Todo: Show the details about every one you choose
